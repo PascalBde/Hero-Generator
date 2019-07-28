@@ -4,7 +4,7 @@ import Stammdaten from './components/Stammdaten';
 import Distinctions from './components/Distinctions';
 import Affiliations from './components/Affiliations';
 import PowerSets from './components/PowerSets';
-import Specs from './components/Specialities';
+import Specialities from './components/Specialities';
 
 class App extends Component {
   constructor(props) {
