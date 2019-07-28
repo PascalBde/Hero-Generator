@@ -59,11 +59,13 @@ class App extends Component {
         <PowerSets onUpdate={(index, data)=>{
             let {characterSheet} = this.state;
             characterSheet["powerSets"][index] = data;
-        
-            this.setState({characterSheet}, ()=>{
-              console.log(this.state);
-            });
-          
+        }}/>
+        <Specialities onUpdate={(index, data)=>{
+          let {characterSheet} = this.state;
+          characterSheet["specialities"][index] = data;
+
+          this.setState({characterSheet}, ()=>{
+            console.log(this.state)});
         }}/>
         </div>
     );
@@ -73,3 +75,5 @@ class App extends Component {
 
 
 export default App;
+this.setState({characterSheet}, ()=>{
+  console.log(this.state)});
