@@ -75,5 +75,3 @@ class App extends Component {
 
 
 export default App;
-this.setState({characterSheet}, ()=>{
-  console.log(this.state)});
