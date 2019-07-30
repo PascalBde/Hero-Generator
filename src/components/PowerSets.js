@@ -11,21 +11,138 @@ class PowerSets extends Component {
           powerSetsData: [],
           availableTraits: [
               {
-                  name: "Vibro-Shock Blast",
-                  dice: 8
+                  name: "Attack"
               },
               {
-                  name: "Enhanced Durability",
-                  dice: 10
+                  name: "Durability"
               },
               {
-                  name: "Jumping",
-                  dice: 8
+                  name: "Elemental Control Air"
               },
               {
-                name: "Nochwas",
-                dice: 8
+                  name: "Elemental Control Cosmic"
+              },
+              {
+                  name: "Elemental Control Darkforce"
+              },
+              {
+                  name: "Elemental Control Earth"
+              },
+              {
+                  name: "Elemental Control Electric"
+              },
+              {
+                  name: "Elemental Control Fire/Heat"
+              },
+              {
+                  name: "Elemental Control Gravity"
+              },
+              {
+                  name: "Elemental Control Ice/Cold"
+              },
+              {
+                  name: "Elemental Control Kinetic/Telekinetic"
+              },
+              {
+                  name: "Elemental Control Light"
+              },
+              {
+                  name: "Elemental Control Magnetic"
+              },
+              {
+                  name: "Elemental Control Sonic"
+              },
+              {
+                  name: "Elemental Control Technology"
+              },
+              {
+                  name: "Elemental Control Weather"
+              },
+              {
+                  name: "Elemental Control Water"
+              },
+              {
+                name: "Intangibility"
+              },
+              {
+                name: "Invisibility"
+              },
+              {
+                name: "Mimic"
+              },
+              {
+                name: "Speed"
+              },
+              {
+                name: "Flight"
+              },
+              {
+                name: "Leaping"
+              },
+              {
+                name: "Swingline"
+              },
+              {
+                name: "Airwalking"
+              },
+              {
+                name: "Burrowing"
+              },
+              {
+                name: "Swimming"
+              },
+              {
+                name: "Mind Control"
+              },
+              {
+                name: "Telepathy"
+              },
+              {
+                name: "Animal Control"
+              },
+              {
+                name: "Plant Control"
+              },
+              {
+                name: "Mystic Resistance"
+              },
+              {
+                name: "Psychic Resistance"
+              },
+              {
+                name: "Reflexes"
+              },
+              {
+                name: "Senses"
+              },
+              {
+                name: "Shapeshifting"
+              },
+              {
+                name: "Size-Changing Growth"
+              },
+              {
+                name: "Size-Changing Shrinking"
+              },
+              {
+                name: "Sorcery"
+              },
+              {
+                name: "Stamina"
+              },
+              {
+                name: "Strength"
+              },
+              {
+                name: "Stretching"
+              },
+              {
+                name: "Teleport"
+              },
+              {
+                name: "Transmutation"
               }
+
           ]
         }
 

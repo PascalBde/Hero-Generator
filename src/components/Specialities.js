@@ -89,10 +89,14 @@ getSpeciality(index, specialityIndex) {
                                 }
                             }
                             
-                            const rankDice = [];
-                            updatedSpeciality.specialities[specialityIndex] = {name: event.target.value, dice: rankDice}
+                            const rankDice = [6, 8, 10];
+                            let userDice = prompt("Würfeltyp angeben");
+                            if(!rankDice.includes(parseInt(userDice))) {
+                              userDice = prompt("Bitte gültigen Würfel eingeben (W6, 8, 10)")
+                            }
+                            updatedSpeciality.specialities[specialityIndex] = {name: event.target.value, dice: userDice}
                             
-                            event.target.selectedOptions[0].innerText += " (W" + rankDice + ")";
+                            event.target.selectedOptions[0].innerText += " (W" + userDice + ")";
                             let updatedSpecialities = this.state.specialitiesData;
                             updatedSpecialities[index] = updatedSpeciality;
                             this.setState({
