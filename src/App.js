@@ -5,6 +5,7 @@ import Distinctions from './components/Distinctions';
 import Affiliations from './components/Affiliations';
 import PowerSets from './components/PowerSets';
 import Specialities from './components/Specialities';
+import BioRp from './components/BioRp';
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +27,10 @@ class App extends Component {
             ],
             specialities: [
               
-            ]
+            ],
+            biorp: {
+
+            }
         }
       }
   }
@@ -61,11 +65,14 @@ class App extends Component {
             characterSheet["powerSets"][index] = data;
         }}/>
         <Specialities onUpdate={(index, data)=>{
-          let {characterSheet} = this.state;
-          characterSheet["specialities"][index] = data;
+            let {characterSheet} = this.state;
+            characterSheet["specialities"][index] = data;
 
-          this.setState({characterSheet}, ()=>{
+            this.setState({characterSheet}, ()=>{
             console.log(this.state)});
+        }}/>
+        <BioRp onUpdate={(index, data)=>{
+            this.updateState("biorp", field, data);
         }}/>
         </div>
     );
