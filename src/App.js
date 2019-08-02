@@ -71,7 +71,7 @@ class App extends Component {
             this.setState({characterSheet}, ()=>{
             console.log(this.state)});
         }}/>
-        <BioRp onUpdate={(index, data)=>{
+        <BioRp onUpdate={(field, data)=>{
             this.updateState("biorp", field, data);
         }}/>
         </div>
