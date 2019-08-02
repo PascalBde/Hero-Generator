@@ -1,0 +1,15 @@
+.accordionHeader {
+    background-color: rgba(43, 133, 207, 0.1);
+    border-bottom: 1px solid rgb(43, 134, 207);
+    color: white;
+    padding-left: 3px;
+}
+
+.accordionHeader p {
+    color: rgb(43, 134, 207);
+    margin-top: 10px;
+}
+
+.accordionPanel {
+    outline: 0;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Component} from 'react';
+import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from 'react-accessible-accordion';
 
 class PowerSets extends Component {
     constructor(props) {
@@ -196,38 +197,45 @@ class PowerSets extends Component {
             powerSet = this.state.powerSets[index];
         }
         return(
-            <div key={index}>
+          <AccordionItem key={index}>
+           <AccordionItemHeading className="accordionHeader"> 
+                <AccordionItemButton>
                 <div className="row">
-                        <div className="col-10">
-                            Power Set {index + 1}
-                        </div>
-                        <div className="col-2">
-                        <button className="btn btn-info" onClick={()=>{
-                                    let updatedPowerset = this.state.powerSets[index];
+                  <div className="col-10">
+                    <p>Power Set {index + 1}</p>
+                  </div>
+                  <div className="col-2  text-right">
+                  <button className="btn btn-primary" onClick={()=>{
+                    let updatedPowerset = this.state.powerSets[index];
                                    
-                                    if(!updatedPowerset) {
-                                        updatedPowerset = {
-                                            traits: []
-                                        }
-                                    }
-                                    let existingTraits = updatedPowerset.traits.length;
+                    if(!updatedPowerset) {
+                      updatedPowerset = {
+                        traits: []
+                      }
+                    }
+                    let existingTraits = updatedPowerset.traits.length;
 
-                                    updatedPowerset.traits.push(this.getTrait(index, existingTraits))
+                    updatedPowerset.traits.push(this.getTrait(index, existingTraits))
                                     
-                                    let updatedPowersets = this.state.powerSets;
-                                    updatedPowersets[index] = updatedPowerset;
-                                    this.setState({
-                                        powerSets: updatedPowersets
-                                    });
-                            }}>+</button>
-                        </div>
-                        
+                    let updatedPowersets = this.state.powerSets;
+                      updatedPowersets[index] = updatedPowerset;
+                      this.setState({
+                        powerSets: updatedPowersets
+                      });
+                    }}>+</button>
+                 </div>
+                 </div>
+                 </AccordionItemButton>
+           </AccordionItemHeading>
+           <AccordionItemPanel className="pl-5 border border-1 border-primary accordionPanel">
+                <div className="row">
+                    <p>Bitte Traits hinzufügen</p>
                 </div>
-
                 <div className="row">
                     {powerSet && powerSet.traits}
                 </div>
-            </div>
+            </AccordionItemPanel>
+            </AccordionItem>
         );
        
     }
@@ -246,7 +254,7 @@ class PowerSets extends Component {
                     <div className="col-10">
                         <h5>Power Sets</h5>
                     </div>
-                    <div className="col-2">
+                    <div className="col-2 text-right">
                         <button className="btn btn-info" onClick={()=>{
                                 this.setState({
                                     countPowerSets: this.state.countPowerSets + 1
@@ -254,9 +262,9 @@ class PowerSets extends Component {
                         }}>+</button>
                     </div>
                 </div>
-                
+                <Accordion>
                 {powerSets}
-            
+                </Accordion>
             </div>
         )
     }

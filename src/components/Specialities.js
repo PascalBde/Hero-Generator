@@ -111,13 +111,6 @@ class Specialities extends Component {
   </select></div>;
   }
 
-
-
-
-
-
-
-
   render() {
       let specialities = [];
 
@@ -131,7 +124,7 @@ class Specialities extends Component {
                   <div className="col-10">
                       <h5>Specialities</h5>
                   </div>
-                  <div className="col-2">
+                  <div className="col-2 text-right">
                       <button className="btn btn-info" onClick={()=>{
                               this.setState({
                                   countSpecialities: this.state.countSpecialities + 1
