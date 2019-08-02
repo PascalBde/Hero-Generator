@@ -6,10 +6,21 @@ class Affiliations extends Component {
         super(props);
 
         this.state = {
+            solo: "",
+            buddy: "",
+            team: ""
           
         }
     }
-
+componentWillMount() {
+    if(this.props.data) {
+        this.setState({
+            solo: this.props.data.solo,
+            buddy: this.props.data.buddy,
+            team: this.props.data.team
+        });
+    }
+}
 
     render() {
         return(
@@ -24,17 +35,17 @@ class Affiliations extends Component {
                         <form>
                             <div className="row">
                                 <div className="col-4">
-                                    <input type="text" className="form-control" placeholder="Solo" onChange={(event)=>{
+                                    <input type="text" className="form-control" placeholder="Solo" value={this.state.solo} onChange={(event)=>{
                                         this.props.onUpdate("solo", event.target.value); 
                                     }}></input>
                                 </div>
                                 <div className="col-4">
-                                    <input type="text" className="form-control" placeholder="Buddy" onChange={(event)=>{
+                                    <input type="text" className="form-control" placeholder="Buddy" value={this.state.buddy} onChange={(event)=>{
                                         this.props.onUpdate("buddy", event.target.value);
                                     }}></input>
                                 </div>
                                 <div className="col-4">
-                                    <input type="text" className="form-control" placeholder="Team" onChange={(event)=>{
+                                    <input type="text" className="form-control" placeholder="Team" value={this.state.team} onChange={(event)=>{
                                         this.props.onUpdate("team", event.target.value);
                                     }}></input>
                                  </div>

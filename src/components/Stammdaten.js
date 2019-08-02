@@ -6,10 +6,21 @@ class Stammdaten extends Component {
         super(props);
 
         this.state = {
-          
+          name: "",
+          gender: "",
+          age: ""
         }
     }
 
+    componentWillMount() {
+        if(this.props.data) {
+            this.setState({
+                name: this.props.data.name,
+                age: this.props.data.age,
+                gender: this.props.data.gender
+            });
+        }
+    }
 
     render() {
         return(
@@ -26,17 +37,17 @@ class Stammdaten extends Component {
                                 <div className="col-4">
                                     <input id={'characterName'} onChange={(event)=>{
                                         this.props.onUpdate("name", event.target.value)
-                                    }} placeholder={'Name'} type="text" className="form-control" />
+                                    }} placeholder={'Name'} value={this.state.name} type="text" className="form-control" />
                                 </div>
                                 <div className="col-4">
                                 <input id={'gender'} onChange={(event)=>{
                                         this.props.onUpdate("gender", event.target.value)
-                                }} placeholder={'Geschlecht'} type="text" className="form-control" />
+                                }} placeholder={'Geschlecht'} value={this.state.gender} type="text" className="form-control" />
                                 </div>
                                 <div className="col-4">
                                 <input id={'age'} onChange={(event)=>{
                                         this.props.onUpdate("age", event.target.value)
-                                }} placeholder={'Alter'} type="text" className="form-control" />
+                                }} placeholder={'Alter'} value={this.state.age} type="text" className="form-control" />
                                 </div>
                             </div>
                         </form>

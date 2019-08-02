@@ -27,6 +27,9 @@ class App extends Component {
             powerSets: [
               {}
             ],
+            powerSetsJsx: [
+
+            ],
             specialities: [
               
             ],
@@ -35,6 +38,7 @@ class App extends Component {
             }
         }
       }
+      console.log(this.state);
   }
   updateState(category, field, data){
     let {characterSheet} = this.state;
@@ -63,23 +67,35 @@ class App extends Component {
             <Tab>Biographie</Tab>
           </TabList>
         <TabPanel>  
-          <Stammdaten onUpdate={(field, data)=>{
+          <Stammdaten 
+          data={this.state.characterSheet.stammdaten}
+          onUpdate={(field, data)=>{
               this.updateState("stammdaten", field, data);
           }} />
         </TabPanel>
         <TabPanel>  
-          <Affiliations onUpdate={(field, data)=>{
+          <Affiliations
+          data={this.state.characterSheet.affiliations} 
+          onUpdate={(field, data)=>{
               this.updateState("affiliations", field, data);
           }}/>
         </TabPanel>
         <TabPanel>
-          <Distinctions onUpdate={(field, data)=>{
+          <Distinctions 
+          data={this.state.characterSheet.distinctions}
+          onUpdate={(field, data)=>{
               this.updateState("distinctions", field, data);
           }}/>
         </TabPanel>
         <TabPanel>
-          <PowerSets characterSheet={this.state.characterSheet} onUpdate={(field, data)=>{
+          <PowerSets 
+          powerSets={this.state.characterSheet.powerSetsJsx} 
+          powerSetsData={this.state.characterSheet.powerSets}
+          onUpdate={(field, data)=>{
               this.updateState("powerSets", field, data);
+          }}
+          onTraitAdded={(field, data)=>{
+            this.updateState("powerSetsJsx", field, data);
           }}/>
         </TabPanel>
         <TabPanel>
@@ -92,7 +108,9 @@ class App extends Component {
           }}/>
         </TabPanel>
         <TabPanel>
-          <BioRp onUpdate={(field, data)=>{
+          <BioRp 
+          data={this.state.characterSheet.biorp}
+          onUpdate={(field, data)=>{
               this.updateState("biorp", field, data);
           }}/>
         </TabPanel>

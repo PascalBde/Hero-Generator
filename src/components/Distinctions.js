@@ -6,10 +6,21 @@ class Distinctions extends Component {
         super(props);
 
         this.state = {
-          
+          distinction1: "",
+          distinction2: "",
+          distinction3: ""
         }
     }
 
+    componentWillMount () {
+        if(this.props.data) {
+            this.setState({
+                distinction1: this.props.data.distinction1,
+                distinction2: this.props.data.distinction2,
+                distinction3: this.props.data.distinction3
+            })
+        }
+    }
 
     render() {
         return(
@@ -24,17 +35,17 @@ class Distinctions extends Component {
                         <form>
                             <div className="row">
                                 <div className="col-4">
-                                    <textarea id={'distinction1'} placeholder={'Text eingeben'} type="text" className="form-control" onChange={(event)=>{
+                                    <textarea id={'distinction1'} placeholder={'Text eingeben'} value={this.state.distinction1} type="text" className="form-control" onChange={(event)=>{
                                         this.props.onUpdate(event.target.id, event.target.value); 
                                     }}/> 
                                 </div>
                                 <div className="col-4">
-                                    <textarea id={'distinction2'} placeholder={'Text eingeben'} type="text" className="form-control" onChange={(event)=>{
+                                    <textarea id={'distinction2'} placeholder={'Text eingeben'} value={this.state.distinction2} type="text" className="form-control" onChange={(event)=>{
                                         this.props.onUpdate(event.target.id, event.target.value); 
                                     }}/>
                                 </div>
                                 <div className="col-4">
-                                    <textarea id={'distinction3'} placeholder={'Text eingeben'} type="text" className="form-control" onChange={(event)=>{
+                                    <textarea id={'distinction3'} placeholder={'Text eingeben'} value={this.state.distinction3} type="text" className="form-control" onChange={(event)=>{
                                         this.props.onUpdate(event.target.id, event.target.value); 
                                     }}/>
                                 </div>

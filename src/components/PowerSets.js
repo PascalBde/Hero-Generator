@@ -155,8 +155,9 @@ class PowerSets extends Component {
         let {availableTraits} = this.state;
 
         for(let availableTrait of availableTraits) {
+            let renderDice = availableTrait.dice;
             trait.push(
-                <option data-dice={availableTrait.dice} key={availableTrait.name}>{availableTrait.name}</option>
+                <option data-dice={renderDice} key={availableTrait.name}>{availableTrait.name}</option>
             )
         }        
 
@@ -178,6 +179,7 @@ class PowerSets extends Component {
                                     updatedPowerset.traits[traitIndex] = {name: event.target.value, dice: userDice}
                                     
                                     event.target.selectedOptions[0].innerText += " (W" + userDice + ")";
+                                    
                                     let updatedPowersets = this.state.powerSetsData;
                                     updatedPowersets[index] = updatedPowerset;
                                     this.setState({
@@ -214,14 +216,14 @@ class PowerSets extends Component {
                       }
                     }
                     let existingTraits = updatedPowerset.traits.length;
-
-                    updatedPowerset.traits.push(this.getTrait(index, existingTraits))
+                    updatedPowerset.traits.push(this.getTrait(index, existingTraits));
                                     
                     let updatedPowersets = this.state.powerSets;
                       updatedPowersets[index] = updatedPowerset;
                       this.setState({
                         powerSets: updatedPowersets
                       });
+                      this.props.onTraitAdded(index, updatedPowerset);
                     }}>+</button>
                  </div>
                  </div>
@@ -240,6 +242,17 @@ class PowerSets extends Component {
        
     }
 
+  
+    componentWillMount() {
+      console.log(this.props);
+      if(this.props.powerSets.length > 0) {
+        this.setState({
+          countPowerSets: this.props.powerSets.length, 
+          powerSets: this.props.powerSets,
+          powerSetsData: this.props.powerSets
+        });
+      }
+    }
   
     render() {
         let powerSets = [];
