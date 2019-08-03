@@ -69,6 +69,19 @@ class Specialities extends Component {
           this.getSpeciality = this.getSpeciality.bind(this);
       }
 
+  checkDice(legalDice = [6, 8, 10]) {
+    // list of legal dice
+
+    let result = prompt("Bitte gültigen Würfel eingeben (W6, 8, 10)");
+    if(!legalDice.includes(parseInt(result))) {
+      result = this.checkDice();
+    }
+    if(result) {
+      return result;
+    } else {
+      this.checkDice();
+    }
+  }    
 
   getSpeciality(index) {
       let speciality = [];
@@ -87,14 +100,7 @@ class Specialities extends Component {
                               if(!specialitiesData) {
                                   specialitiesData = [];
                               }
-                              // list of legal dice
-                              const rankDice = [6, 8, 10];
-
-                              let userDice = prompt("Würfeltyp angeben");
-                              if(!rankDice.includes(parseInt(userDice))) {
-                                userDice = prompt("Bitte gültigen Würfel eingeben (W6, 8, 10)")
-                              }
-                              
+                              let userDice = this.checkDice();
                               const currentSpeciality = {name: event.target.value, dice: userDice};
                               specialitiesData.push(currentSpeciality);
                               
