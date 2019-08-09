@@ -7,9 +7,9 @@ class PowerSets extends Component {
         super(props);
 
         this.state = {
-          countPowerSets: 1,
+          countPowerSets: this.props.powerSetsData.length  || 1,
           powerSets: [],
-          powerSetsData: [],
+          powerSetsData: this.props.powerSetsData || [],
           availableTraits: [
               {
                   name: "Attack"
@@ -153,19 +153,36 @@ class PowerSets extends Component {
     getTrait(index, traitIndex) {
         let trait = [];
         let {availableTraits} = this.state;
+        let currentPowerset = this.state.powerSetsData[index] || {};
 
+        console.log(currentPowerset);
         for(let availableTrait of availableTraits) {
+            let isSelectedTrait = false;
+            let availableTraitIndex = 0;
+            let selectedTrait;
+
+            if(currentPowerset.traits) {
+              for(let existingTrait of currentPowerset.traits) {
+                if(existingTrait.name === availableTrait.name && availableTraitIndex === traitIndex) {
+                  isSelectedTrait = true;
+                  selectedTrait = availableTrait;
+                  break;
+                }
+                availableTraitIndex = availableTraitIndex + 1;
+              }
+            }
+            console.log(currentPowerset, isSelectedTrait, selectedTrait, availableTrait);
             let renderDice = availableTrait.dice;
             trait.push(
-                <option data-dice={renderDice} key={availableTrait.name}>{availableTrait.name}</option>
+                <option data-dice={renderDice} key={availableTrait.name} selected={isSelectedTrait}>{availableTrait.name}</option>
             )
         }        
 
         return <div className="col-4">
-            <select className='form-control' onChange={(event)=>{
+            <select id={index + '_' + traitIndex} className='form-control' onChange={(event)=>{
                                     let updatedPowerset = this.state.powerSetsData[index];
 
-                                    if(!updatedPowerset) {
+                                    if(!updatedPowerset || !updatedPowerset.traits) {
                                         updatedPowerset = {
                                             traits: []
                                         }
@@ -198,6 +215,8 @@ class PowerSets extends Component {
         if(this.state.powerSets[index]) {
             powerSet = this.state.powerSets[index];
         }
+
+      
         return(
           <AccordionItem key={index}>
            <AccordionItemHeading className="accordionHeader"> 
@@ -208,8 +227,7 @@ class PowerSets extends Component {
                   </div>
                   <div className="col-2  text-right">
                   <button className="btn btn-primary" onClick={()=>{
-                    let updatedPowerset = this.state.powerSets[index];
-                                   
+                    let updatedPowerset = this.state.powerSets[index];                                   
                     if(!updatedPowerset) {
                       updatedPowerset = {
                         traits: []
@@ -249,7 +267,7 @@ class PowerSets extends Component {
         this.setState({
           countPowerSets: this.props.powerSets.length, 
           powerSets: this.props.powerSets,
-          powerSetsData: this.props.powerSets
+          powerSetsData: this.props.powerSetsData
         });
       }
     }

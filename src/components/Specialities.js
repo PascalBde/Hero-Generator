@@ -6,8 +6,8 @@ class Specialities extends Component {
           super(props);
 
           this.state = {
-            countSpecialities: 0,
-            specialities: [],
+            countSpecialities: this.props.specialities.length || 0,
+            specialities: this.props.specialities || [],
             specialitiesData: [],
             availableSpecialities: [
                 {
@@ -87,11 +87,24 @@ class Specialities extends Component {
       let speciality = [];
       let {availableSpecialities} = this.state;
 
+      let existingSpecialities = this.state.specialities;
+      console.log(existingSpecialities);
       for(let availableSpeciality of availableSpecialities) {
+          let isSelectedSpeciality = false;
+          let specialityIndex = 0;
+
+          for(let existingSpeciality of existingSpecialities) {
+              if(existingSpeciality.name === availableSpeciality.name && specialityIndex === index) {
+                isSelectedSpeciality = true;
+                break;
+              }
+              specialityIndex = specialityIndex + 1;
+          }
           speciality.push(
-              <option key={availableSpecialities.name}>{availableSpeciality.name}</option>
-              )
+              <option key={availableSpecialities.name} selected={isSelectedSpeciality}>{availableSpeciality.name}</option>
+              );       
       }
+
       return <div className="col-4">
       <select className='form-control' onChange={(event)=>{
                               let specialitiesData = this.state.specialitiesData;
@@ -117,6 +130,12 @@ class Specialities extends Component {
   </select></div>;
   }
 
+  componentWillReceiveProps(nextProps, nextState) {
+    console.log(nextProps, nextState);
+  }
+  componentWillMount() {
+    console.log(this.props);
+  }
   render() {
       let specialities = [];
 

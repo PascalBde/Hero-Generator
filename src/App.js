@@ -8,6 +8,9 @@ import Specialities from './components/Specialities';
 import BioRp from './components/BioRp';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
+import { save } from 'save-file'
+
+import SaveIcon from 'react-feather/dist/icons/download-cloud';
 
 class App extends Component {
   constructor(props) {
@@ -49,6 +52,7 @@ class App extends Component {
     });
   
   }
+  
   render() {
     return (
       <div id="app">
@@ -57,6 +61,13 @@ class App extends Component {
             <h1>Marvel Character Generator!</h1>
           </div>
         </div>
+        <button className={'btn btn-info'} onClick={async ()=>{
+          let {characterSheet} = this.state;
+
+          await save(characterSheet.stammdaten.name + '.char', JSON.stringify(characterSheet)); 
+        }
+        }><SaveIcon/></button>
+
         <Tabs>
           <TabList>
             <Tab>Allgemein</Tab>
@@ -99,7 +110,9 @@ class App extends Component {
           }}/>
         </TabPanel>
         <TabPanel>
-          <Specialities onUpdate={(index, data)=>{
+          <Specialities 
+          specialities={this.state.characterSheet.specialities}
+          onUpdate={(index, data)=>{
               let {characterSheet} = this.state;
               characterSheet["specialities"][index] = data;
 
@@ -115,7 +128,6 @@ class App extends Component {
           }}/>
         </TabPanel>
         </Tabs>
-        
         </div>
     );
   }

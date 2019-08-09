@@ -6,8 +6,10 @@
     "react": "^16.8.6",
     "react-accessible-accordion": "^3.0.0",
     "react-dom": "^16.8.6",
+    "react-feather": "^2.0.3",
     "react-scripts": "3.0.1",
-    "react-tabs": "^3.0.0"
+    "react-tabs": "^3.0.0",
+    "save-file": "^2.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
