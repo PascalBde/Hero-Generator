@@ -22,6 +22,17 @@ class Stammdaten extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps, nextState) {
+        if(nextProps.data.name !== this.state.name) {
+            this.setState({name: nextProps.data.name});
+        }
+        if(nextProps.data.gender !== this.state.gender) {
+            this.setState({gender: nextProps.data.gender});
+        }
+        if(nextProps.data.age !== this.state.age) {
+            this.setState({age: nextProps.data.age});
+        }
+    }
     render() {
         return(
             <div>

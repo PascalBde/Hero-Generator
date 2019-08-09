@@ -11,6 +11,8 @@ import "react-tabs/style/react-tabs.css";
 import { save } from 'save-file'
 
 import SaveIcon from 'react-feather/dist/icons/download-cloud';
+import LoadIcon from 'react-feather/dist/icons/upload-cloud';
+const fileDialog = require('file-dialog')
 
 class App extends Component {
   constructor(props) {
@@ -53,6 +55,7 @@ class App extends Component {
   
   }
   
+  compon
   render() {
     return (
       <div id="app">
@@ -67,6 +70,28 @@ class App extends Component {
           await save(characterSheet.stammdaten.name + '.char', JSON.stringify(characterSheet)); 
         }
         }><SaveIcon/></button>
+        <button className={'btn btn-info'} onClick={async ()=>{
+            fileDialog()
+            .then(files => {
+              var reader = new FileReader();
+
+              // Closure to capture the file information.
+              reader.onload = (function(theFile) {
+                return function(e) {
+                  let result = JSON.parse(e.target.result);
+                  console.log(result);
+                  this.setState({
+                    characterSheet: result
+                  })
+                  this.forceUpdate();
+                };
+              })(files[0]).bind(this);
+
+              // Read in the image file as a data URL.
+              reader.readAsText(files[0]);
+            })
+        }
+        }><LoadIcon/></button>
 
         <Tabs>
           <TabList>
