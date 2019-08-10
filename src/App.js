@@ -7,7 +7,6 @@ import PowerSets from './components/PowerSets';
 import Specialities from './components/Specialities';
 import BioRp from './components/BioRp';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import "react-tabs/style/react-tabs.css";
 import { save } from 'save-file'
 
 import SaveIcon from 'react-feather/dist/icons/download-cloud';
