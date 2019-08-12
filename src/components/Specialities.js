@@ -12,57 +12,57 @@ class Specialities extends Component {
             availableSpecialities: [
                 {
                     name: "Acrobatic",
-                  },
+                },
                 {
                     name: "Business",
-                  },
+                },
                 {
                     name: "Combat",
-                  },
+                },
                 {
                     name: "Cosmic",
-                  },
+                },
                 {
                     name: "Covert",
-                  },
+                },
                 {
                     name: "Crime",
-                  },
+                },
                 {
                     name: "Medical",
-                  },
+                },
                 {
                     name: "Menace",
-                  },
+                },
                 {
                     name: "Mystic",
-                  },
+                },
                 {
                     name: "Psych",
-                  },
+                },
                 {
                     name: "Science",
-                  },
+                },
                 {
                     name: "Tech",
-                  },
+                },
                 {
                     name: "Vehicle",
-                  },
+                },
             ],
             specialityRank: [
                 {
                     name: "Master",
                     dice: 10, 
-                  },
+                },
                 {
                     name: "Expert",
                     dice: 8,
-                  },
+                },
                 {
                     name: "Rookie",
                     dice: 6,
-                  }
+                }
             ]
           }
 

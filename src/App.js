@@ -6,11 +6,12 @@ import Affiliations from './components/Affiliations';
 import PowerSets from './components/PowerSets';
 import Specialities from './components/Specialities';
 import BioRp from './components/BioRp';
+import Milestones from './components/Milestones';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { save } from 'save-file'
-
 import SaveIcon from 'react-feather/dist/icons/download-cloud';
 import LoadIcon from 'react-feather/dist/icons/upload-cloud';
+
 const fileDialog = require('file-dialog')
 
 class App extends Component {
@@ -39,7 +40,10 @@ class App extends Component {
             ],
             biorp: {
 
-            }
+            },
+            milestones: [
+              {}
+            ]
         }
       }
       console.log(this.state);
@@ -100,6 +104,7 @@ class App extends Component {
             <Tab>Power Sets</Tab>
             <Tab>Specialities</Tab>
             <Tab>Biographie</Tab>
+            <Tab>Milestones</Tab>
           </TabList>
         <TabPanel>  
           <Stammdaten 
@@ -150,6 +155,13 @@ class App extends Component {
           onUpdate={(field, data)=>{
               this.updateState("biorp", field, data);
           }}/>
+        </TabPanel>
+        <TabPanel>  
+          <Milestones 
+          data={this.state.characterSheet.stammdaten}
+          onUpdate={(field, data)=>{
+              this.updateState("milestones", field, data);
+          }} />
         </TabPanel>
         </Tabs>
         </div>
