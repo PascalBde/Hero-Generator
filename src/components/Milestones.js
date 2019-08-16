@@ -96,7 +96,7 @@ class Milestones extends Component {
                     <div className="col-12">
                         <form>
                             <div className="row">
-                                <label htmlFor="milestone1XP1">1 XP:</label>
+                                <label htmlFor="milestone2XP1">1 XP:</label>
                                 <div className="col-10">
                                     <input id={'milestone1XP1'} onChange={(event)=>{
                                         this.props.onUpdate("mile1XP2", event.target.value)
@@ -104,7 +104,7 @@ class Milestones extends Component {
                                 </div>
                             </div>
                             <div className="row"> 
-                                <label htmlFor="milestone1XP3">3 XP:</label>
+                                <label htmlFor="milestone2XP3">3 XP:</label>
                                 <div className="col-10">                               
                                 <input id={'milestone1XP3'} onChange={(event)=>{
                                         this.props.onUpdate("mile3XP2", event.target.value)
@@ -112,7 +112,7 @@ class Milestones extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label htmlFor="milestone1XP10">10 XP:</label>
+                                <label htmlFor="milestone2XP10">10 XP:</label>
                                 <div className="col-10">                                
                                 <input id={'milstone1XP10'} onChange={(event)=>{
                                         this.props.onUpdate("mile10XP2", event.target.value)
