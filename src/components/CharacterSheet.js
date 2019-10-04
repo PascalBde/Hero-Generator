@@ -29,7 +29,7 @@ class CharacterSheet extends Component {
                     }><PrintIcon/></button>                </div>
             </div>
             <div className="row pb-3">
-                <div className="col-4">
+                <div className="col-12 col-sm-4">
                     <div className="card">
                         <div className="card-header">
                             Allgemein
@@ -68,7 +68,7 @@ class CharacterSheet extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-4">
+                <div className="col-12 col-sm-4">
                     <div className="card">
                         <div className="card-header">
                             Affiliations
@@ -107,7 +107,7 @@ class CharacterSheet extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-4">
+                <div className="col-12 col-sm-4">
                     <div className="card">
                         <div className="card-header">
                             Distinctions
@@ -139,7 +139,7 @@ class CharacterSheet extends Component {
                 </div>
             </div>
             <div className="row">
-                <div className="col-4">
+                <div className="col-12 col-sm-4">
                     <div className="card">
                         <div className="card-header">
                             Power Sets
@@ -157,7 +157,7 @@ class CharacterSheet extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-4">
+                <div className="col-12 col-sm-4">
                     <div className="card">
                         <div className="card-header">
                             Specialities
@@ -171,7 +171,7 @@ class CharacterSheet extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-4">
+                <div className="col-12 col-sm-4">
                     <div className="card">
                         <div className="card-header">
                             Biographie
