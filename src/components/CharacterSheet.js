@@ -1,5 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
+import PrintIcon from 'react-feather/dist/icons/printer';
+import {save} from "save-file";
 
 class CharacterSheet extends Component {
 
@@ -7,7 +9,6 @@ class CharacterSheet extends Component {
         super(props);
 
         this.state = {
-            categories: ['Allgemein', 'Affiliations', 'Distinctions', 'Power Sets', 'Specialities', 'Biographie']
         };
 
     }
@@ -22,7 +23,10 @@ class CharacterSheet extends Component {
             <div className="row">
                 <div className="col-12">
                     <h2>Charakterblatt</h2>
-                </div>
+                    <button className={'btn btn-info'} onClick={()=>{
+                        window.print();
+                    }
+                    }><PrintIcon/></button>                </div>
             </div>
             <div className="row pb-3">
                 <div className="col-4">
