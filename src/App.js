@@ -11,6 +11,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { save } from 'save-file'
 import SaveIcon from 'react-feather/dist/icons/download-cloud';
 import LoadIcon from 'react-feather/dist/icons/upload-cloud';
+import CharacterSheet from "./components/CharacterSheet";
 
 const fileDialog = require('file-dialog')
 
@@ -31,9 +32,6 @@ class App extends Component {
             },
             powerSets: [
               {}
-            ],
-            powerSetsJsx: [
-
             ],
             specialities: [
               
@@ -105,6 +103,7 @@ class App extends Component {
             <Tab>Specialities</Tab>
             <Tab>Biographie</Tab>
             <Tab>Milestones</Tab>
+            <Tab>Charakterblatt</Tab>
           </TabList>
         <TabPanel>  
           <Stammdaten 
@@ -159,6 +158,9 @@ class App extends Component {
               this.updateState("milestones", field, data);
           }} />
         </TabPanel>
+            <TabPanel>
+              <CharacterSheet data={this.state.characterSheet}/>
+            </TabPanel>
         </Tabs>
         </div>
     );
