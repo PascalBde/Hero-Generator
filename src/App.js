@@ -129,13 +129,9 @@ class App extends Component {
         </TabPanel>
         <TabPanel>
           <PowerSets 
-          powerSets={this.state.characterSheet.powerSetsJsx} 
           powerSetsData={this.state.characterSheet.powerSets}
           onUpdate={(field, data)=>{
               this.updateState("powerSets", field, data);
-          }}
-          onTraitAdded={(field, data)=>{
-            this.updateState("powerSetsJsx", field, data);
           }}/>
         </TabPanel>
         <TabPanel>
