@@ -8,18 +8,19 @@ class Stammdaten extends Component {
         this.state = {
           name: "",
           gender: "",
-          age: ""
+          age: "",
+          users: []
         }
     }
+    request = async (url) => {
+        const response = await fetch(url);
+        const json = await response.json();
+        return json;
+    }
 
-    componentWillMount() {
-        if(this.props.data) {
-            this.setState({
-                name: this.props.data.name,
-                age: this.props.data.age,
-                gender: this.props.data.gender
-            });
-        }
+    async componentWillMount() {
+        let allUsers = await this.request("http://localhost/pascal/user.php/showAll");  
+        this.setState({users: allUsers.items});  
     }
 
     componentWillReceiveProps(nextProps, nextState) {
@@ -34,11 +35,21 @@ class Stammdaten extends Component {
         }
     }
     render() {
+        const {users} = this.state;       
         return(
             <div>
                 <div className="row">
                     <div className="col-12">
                         <h5>Allgemein</h5>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <ul>
+                        {users.length > 0 && users.map((user)=>{
+                            return <li>{user.name}</li>
+                        })}
+                        </ul>
                     </div>
                 </div>
                 <div className="row">
