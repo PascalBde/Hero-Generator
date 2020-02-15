@@ -1,5 +1,6 @@
 import React from 'react';
 import {Component} from 'react';
+import persona from '../api/persona';
 
 class Stammdaten extends Component {
     constructor(props) {
@@ -11,16 +12,14 @@ class Stammdaten extends Component {
           age: "",
           users: []
         }
-    }
-    request = async (url) => {
-        const response = await fetch(url);
-        const json = await response.json();
-        return json;
+
+        this.submit = this.submit.bind(this);
     }
 
     async componentWillMount() {
-        let allUsers = await this.request("http://localhost/pascal/user.php/showAll");  
-        this.setState({users: allUsers.items});  
+        const personaAPI = new persona();
+        let allUsers = await personaAPI.getAll(); 
+        this.setState({users: allUsers});
     }
 
     componentWillReceiveProps(nextProps, nextState) {
@@ -33,6 +32,21 @@ class Stammdaten extends Component {
         if(nextProps.data.age !== this.state.age) {
             this.setState({age: nextProps.data.age});
         }
+    }
+
+    async submit(event) {
+        event.preventDefault();
+        const {name, gender, age} = this.state;
+        const postData = {
+            name, 
+            gender,
+            age
+        }
+        const personaAPI = new persona();
+        const createdPersona = await personaAPI.add(postData);
+        console.log(postData, createdPersona);
+        let allUsers = await personaAPI.getAll(); 
+        this.setState({users: allUsers});
     }
     render() {
         const {users} = this.state;       
@@ -54,7 +68,7 @@ class Stammdaten extends Component {
                 </div>
                 <div className="row">
                     <div className="col-12">
-                        <form>
+                        <form onSubmit={this.submit}>
                             <div className="row">
                                 <div className="col-4">
                                     <input id={'characterName'} onChange={(event)=>{
@@ -70,6 +84,11 @@ class Stammdaten extends Component {
                                 <input id={'age'} onChange={(event)=>{
                                         this.props.onUpdate("age", event.target.value)
                                 }} placeholder={'Alter'} value={this.state.age} type="text" className="form-control" />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12">
+                                    <button className="btn btn-success">Abschicken</button>
                                 </div>
                             </div>
                         </form>
