@@ -62,7 +62,7 @@ class App extends Component {
       <div id="app">
         <div className="row">
           <div className="col-12">
-            <h1 className="text-danger">Marvelator!</h1>
+            <h1 className="text-danger">Marvelator</h1>
           </div>
         </div>
         <button className={'btn btn-info'} onClick={async ()=>{

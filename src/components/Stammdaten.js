@@ -1,6 +1,6 @@
 import React from 'react';
 import {Component} from 'react';
-import persona from '../api/persona';
+// import persona from '../api/persona';
 
 class Stammdaten extends Component {
     constructor(props) {
@@ -13,14 +13,14 @@ class Stammdaten extends Component {
           users: []
         }
 
-        this.submit = this.submit.bind(this);
+    //    this.submit = this.submit.bind(this);
     }
 
-    async componentWillMount() {
-        const personaAPI = new persona();
-        let allUsers = await personaAPI.getAll(); 
-        this.setState({users: allUsers});
-    }
+//    async componentWillMount() {
+//        const personaAPI = new persona();
+//        let allUsers = await personaAPI.getAll(); 
+//        this.setState({users: allUsers});
+//    }
 
     componentWillReceiveProps(nextProps, nextState) {
         if(nextProps.data.name !== this.state.name) {
@@ -34,20 +34,28 @@ class Stammdaten extends Component {
         }
     }
 
-    async submit(event) {
-        event.preventDefault();
-        const {name, gender, age} = this.state;
-        const postData = {
-            name, 
-            gender,
-            age
-        }
-        const personaAPI = new persona();
-        const createdPersona = await personaAPI.add(postData);
-        console.log(postData, createdPersona);
-        let allUsers = await personaAPI.getAll(); 
-        this.setState({users: allUsers});
-    }
+//    async submit(event) {
+//        event.preventDefault();
+//        const {name, gender, age} = this.state;
+//        const postData = {
+//            name, 
+//            gender,
+//            age
+//        }
+//       const personaAPI = new persona();
+//        const createdPersona = await personaAPI.add(postData);
+//        console.log(postData, createdPersona);
+//        let allUsers = await personaAPI.getAll(); 
+//        this.setState({users: allUsers});
+//    }
+
+// <div className="row">
+// <div className="col-12">
+//    <button className="btn btn-success">Abschicken</button>
+// </div>
+// </div>
+
+
     render() {
         const {users} = this.state;       
         return(
@@ -86,11 +94,7 @@ class Stammdaten extends Component {
                                 }} placeholder={'Alter'} value={this.state.age} type="text" className="form-control" />
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col-12">
-                                    <button className="btn btn-success">Abschicken</button>
-                                </div>
-                            </div>
+                           
                         </form>
                     </div>
                 </div>
